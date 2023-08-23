@@ -1,0 +1,25 @@
+.rhap_additional-controls,
+.rhap_rewind-button,
+.rhap_forward-button,
+.rhap_volume-controls {
+  display: none;
+}
+
+.rhap_controls-section {
+  flex-grow: 0;
+}
+
+.rhap_progress-filled,
+.rhap_progress-indicator {
+  background-color: #fb7c00;
+}
+
+.rhap_progress-indicator {
+  width: 10px;
+  height: 10px;
+  top: -2px;
+}
+
+.rhap_container {
+  border-radius: 3px;
+}
