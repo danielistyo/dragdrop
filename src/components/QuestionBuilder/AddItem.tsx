@@ -17,6 +17,7 @@ import uniqueId from "lodash/fp/uniqueId";
 const AddItem = () => {
   const [openPane, setOpenPane] = useState(true);
   const [questionEls, setQuestionEls] = useState<Array<{ id: string; type: string }>>([]);
+  const [isDragging, setIsDragging] = useState(false);
 
   const onQuestionDelete = (id: string) => {
     setQuestionEls(questionEls.filter((q) => q.id !== id));
@@ -24,10 +25,17 @@ const AddItem = () => {
 
   const onDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
+    // (e.target as HTMLDivElement).style.filter =
+    setIsDragging(true);
   };
 
+  const onDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
   const onDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
+    setIsDragging(false);
     const type = e.dataTransfer.getData("question_type");
 
     // scroll to bottom once successfully add question
@@ -42,12 +50,16 @@ const AddItem = () => {
   return (
     <>
       <div
-        className={`border-t mt-[-1px] p-5 text-gray-700 hover: ${
+        className={`border-t mt-[-1px] p-5 text-gray-700 relative hover: ${
           openPane ? "w-[calc(100%-224px)]" : "w-[calc(100%-28px)]"
         }`}
         onDragOver={onDragOver}
+        onDragLeave={onDragLeave}
         onDrop={onDrop}
       >
+        {isDragging && (
+          <div className="absolute top-0 right-0 bottom-0 left-0 bg-[#0303b545] flex items-center z-20"></div>
+        )}
         <div className="text-xs font-bold mb-2">Section 1/1</div>
         <AudioUploader />
         <FieldProperties />
