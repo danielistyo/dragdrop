@@ -6,7 +6,7 @@ const MiniQuestionTypeBox = ({ children, title }: { children: ReactNode; title: 
   };
   return (
     <div
-      className="bg-[#f8f7fd] p-3 text-[10px] relative w-full shadow-lg hover:bg-[#fba33b] rounded-md mt-3"
+      className="bg-[#f8f7fd] p-3 text-[10px] relative w-full shadow-lg hover:bg-[#fba33b] rounded-md mt-3 cursor-grab"
       draggable
       onDragStart={onDragStart}
     >
