@@ -30,6 +30,7 @@ const AddItem = () => {
     e.preventDefault();
     const type = e.dataTransfer.getData("question_type");
 
+    // scroll to bottom once successfully add question
     setTimeout(() => {
       window.scrollTo(0, document.body.scrollHeight);
     }, 500);
@@ -47,7 +48,7 @@ const AddItem = () => {
         onDragOver={onDragOver}
         onDrop={onDrop}
       >
-        <div className="text-xs font-bold mb-">Section 1/1</div>
+        <div className="text-xs font-bold mb-2">Section 1/1</div>
         <AudioUploader />
         <FieldProperties />
         <div>
