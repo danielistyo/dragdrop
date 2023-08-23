@@ -14,7 +14,7 @@ const Tab = ({
   };
   return (
     <div>
-      <div className="flex">
+      <div className="flex relative z-20">
         {tabs.map(({ title }) => (
           <div
             key={title}
@@ -28,7 +28,7 @@ const Tab = ({
           </div>
         ))}
       </div>
-      <div>{tabs.find((tab) => tab.title === selected)?.body}</div>
+      <div className="relative z-10">{tabs.find((tab) => tab.title === selected)?.body}</div>
     </div>
   );
 };
